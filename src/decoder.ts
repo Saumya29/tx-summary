@@ -296,6 +296,57 @@ const KNOWN_CONTRACTS: Record<string, string> = {
   // === Helper Contracts ===
   '0xca11bde05977b3631167028862be2a173976ca11': 'Multicall3',
   '0x0000000000000068f116a894984e2db1123eb395': 'Seaport 1.6',
+
+  // ==========================================
+  // === ARBITRUM CONTRACTS ===
+  // ==========================================
+  '0x82af49447d8a07e3bd95bd0d56f35241523fbab1': 'WETH (Arbitrum)',
+  '0x5e325eda8064b456f4781070c0738d849c824258': 'Uniswap Universal Router (Arbitrum)',
+  '0x794a61358d6845594f94dc1db02a252b5b4814ad': 'Aave V3 Pool (Arbitrum)',
+  '0x1231deb6f5749ef6ce6943a275a1d3e7486f4eae': 'LiFi Diamond (Arbitrum)',
+  '0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9': 'USDT (Arbitrum)',
+  '0xaf88d065e77c8cc2239327c5edb3a432268e5831': 'USDC (Arbitrum)',
+  '0xff970a61a04b1ca14834a43f5de4533ebddb5cc8': 'USDC.e (Arbitrum)',
+  '0xda10009cbd5d07dd0cecc66161fc93d7c9000da1': 'DAI (Arbitrum/Optimism)',
+
+  // ==========================================
+  // === OPTIMISM CONTRACTS ===
+  // ==========================================
+  '0x4200000000000000000000000000000000000006': 'WETH (Optimism/Base)',
+  '0x794a61358d6845594f94dc1db02a252b5b4814ae': 'Aave V3 Pool (Optimism)',
+  '0x0b2c639c533813f4aa9d7837caf62653d097ff85': 'USDC (Optimism)',
+  '0x7f5c764cbc14f9669b88837ca1490cca17c31607': 'USDC.e (Optimism)',
+  '0x94b008aa00579c1307b0ef2c499ad98a8ce58e58': 'USDT (Optimism)',
+  // DAI on Optimism uses same address as Arbitrum (0xda10...da1)
+  '0x4200000000000000000000000000000000000042': 'OP Token',
+
+  // ==========================================
+  // === BASE CONTRACTS ===
+  // ==========================================
+  '0xa238dd80c259a72e81d7e4664a9801593f98d1c5': 'Aave V3 Pool (Base)',
+  '0x2626664c2603336e57b271c5c0b26f421741e481': 'Uniswap V3 Router (Base)',
+  '0x833589fcd6edb6e08f4c7c32d4f71b54bda02913': 'USDC (Base)',
+  '0x50c5725949a6f0c72e6c4a641f24049a917db0cb': 'DAI (Base)',
+
+  // ==========================================
+  // === POLYGON CONTRACTS ===
+  // ==========================================
+  '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270': 'WMATIC',
+  '0x794a61358d6845594f94dc1db02a252b5b4814af': 'Aave V3 Pool (Polygon)',
+  '0xa5e0829caced8ffdd4de3c43696c57f7d7a678ff': 'QuickSwap Router',
+  '0x3c499c542cef5e3811e1192ce70d8cc03d5c3359': 'USDC (Polygon)',
+  '0x2791bca1f2de4661ed88a30c99a7a9449aa84174': 'USDC.e (Polygon)',
+  '0xc2132d05d31c914a87c6611c10748aeb04b58e8f': 'USDT (Polygon)',
+  '0x8f3cf7ad23cd3cadbd9735aff958023239c6a063': 'DAI (Polygon)',
+
+  // ==========================================
+  // === ZKSYNC ERA CONTRACTS ===
+  // ==========================================
+  '0x5aea5775959fbc2557cc8789bc1bf90a239d9a91': 'WETH (zkSync)',
+  '0x2da10a1e27bf85cedd8ffb1abbe97e53391c0295': 'SyncSwap Router',
+  '0x1d17cbcf0d6d143135ae902365d2e5e2a16538d4': 'USDC (zkSync)',
+  '0x493257fd37edb34451f62edf8d2a0c418852ba4c': 'USDT (zkSync)',
+  '0x4b9eb6c0b6ea15176bbf62841c6b2a8a398cb656': 'DAI (zkSync)',
 };
 
 // Known tokens with symbols and decimals
@@ -378,6 +429,48 @@ const KNOWN_TOKENS: Record<string, { symbol: string; decimals: number; name?: st
   '0xb0505e5a99abd03d94a1169e638b78edfed26ea4': { symbol: 'uSUI', decimals: 9, name: 'Universal SUI' },
   '0xa3a34a0d9a08ccddb6ed422ac0a28a06731335aa': { symbol: 'uADA', decimals: 6, name: 'Universal ADA' },
   '0x2615a94df961278dcbc41fb0a54fec5f10a693ae': { symbol: 'uXRP', decimals: 6, name: 'Universal XRP' },
+
+  // ==========================================
+  // === ARBITRUM TOKENS ===
+  // ==========================================
+  '0x82af49447d8a07e3bd95bd0d56f35241523fbab1': { symbol: 'WETH', decimals: 18, name: 'Wrapped Ether (Arbitrum)' },
+  '0xaf88d065e77c8cc2239327c5edb3a432268e5831': { symbol: 'USDC', decimals: 6, name: 'USD Coin (Arbitrum)' },
+  '0xff970a61a04b1ca14834a43f5de4533ebddb5cc8': { symbol: 'USDC.e', decimals: 6, name: 'Bridged USDC (Arbitrum)' },
+  '0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9': { symbol: 'USDT', decimals: 6, name: 'Tether (Arbitrum)' },
+  '0xda10009cbd5d07dd0cecc66161fc93d7c9000da1': { symbol: 'DAI', decimals: 18, name: 'Dai (Arbitrum/Optimism)' },
+  '0x912ce59144191c1204e64559fe8253a0e49e6548': { symbol: 'ARB', decimals: 18, name: 'Arbitrum' },
+
+  // ==========================================
+  // === OPTIMISM TOKENS ===
+  // ==========================================
+  '0x4200000000000000000000000000000000000006': { symbol: 'WETH', decimals: 18, name: 'Wrapped Ether (Optimism)' },
+  '0x0b2c639c533813f4aa9d7837caf62653d097ff85': { symbol: 'USDC', decimals: 6, name: 'USD Coin (Optimism)' },
+  '0x7f5c764cbc14f9669b88837ca1490cca17c31607': { symbol: 'USDC.e', decimals: 6, name: 'Bridged USDC (Optimism)' },
+  '0x94b008aa00579c1307b0ef2c499ad98a8ce58e58': { symbol: 'USDT', decimals: 6, name: 'Tether (Optimism)' },
+  '0x4200000000000000000000000000000000000042': { symbol: 'OP', decimals: 18, name: 'Optimism' },
+
+  // ==========================================
+  // === BASE TOKENS ===
+  // ==========================================
+  '0x833589fcd6edb6e08f4c7c32d4f71b54bda02913': { symbol: 'USDC', decimals: 6, name: 'USD Coin (Base)' },
+  '0x50c5725949a6f0c72e6c4a641f24049a917db0cb': { symbol: 'DAI', decimals: 18, name: 'Dai (Base)' },
+
+  // ==========================================
+  // === POLYGON TOKENS ===
+  // ==========================================
+  '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270': { symbol: 'WMATIC', decimals: 18, name: 'Wrapped MATIC' },
+  '0x3c499c542cef5e3811e1192ce70d8cc03d5c3359': { symbol: 'USDC', decimals: 6, name: 'USD Coin (Polygon)' },
+  '0x2791bca1f2de4661ed88a30c99a7a9449aa84174': { symbol: 'USDC.e', decimals: 6, name: 'Bridged USDC (Polygon)' },
+  '0xc2132d05d31c914a87c6611c10748aeb04b58e8f': { symbol: 'USDT', decimals: 6, name: 'Tether (Polygon)' },
+  '0x8f3cf7ad23cd3cadbd9735aff958023239c6a063': { symbol: 'DAI', decimals: 18, name: 'Dai (Polygon)' },
+
+  // ==========================================
+  // === ZKSYNC ERA TOKENS ===
+  // ==========================================
+  '0x5aea5775959fbc2557cc8789bc1bf90a239d9a91': { symbol: 'WETH', decimals: 18, name: 'Wrapped Ether (zkSync)' },
+  '0x1d17cbcf0d6d143135ae902365d2e5e2a16538d4': { symbol: 'USDC', decimals: 6, name: 'USD Coin (zkSync)' },
+  '0x493257fd37edb34451f62edf8d2a0c418852ba4c': { symbol: 'USDT', decimals: 6, name: 'Tether (zkSync)' },
+  '0x4b9eb6c0b6ea15176bbf62841c6b2a8a398cb656': { symbol: 'DAI', decimals: 18, name: 'Dai (zkSync)' },
 };
 
 // Transfer event topic

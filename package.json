@@ -19,11 +19,17 @@
   },
   "keywords": [
     "ethereum",
+    "arbitrum",
+    "optimism",
+    "base",
+    "polygon",
+    "zksync",
     "transaction",
     "blockchain",
     "cli",
     "decoder",
-    "summary"
+    "summary",
+    "evm"
   ],
   "author": "Saumya Tiwari <saumyatiwari.29@gmail.com>",
   "license": "MIT",

@@ -3,7 +3,7 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
 import { summarizeTx } from './api.js';
-import { getExplorerUrl, CHAINS } from './chains.js';
+import { getExplorerUrl, CHAINS, parseExplorerUrl } from './chains.js';
 
 const program = new Command();
 
@@ -11,33 +11,43 @@ program
   .name('tx-summary')
   .description('Summarize blockchain transactions in plain English')
   .version('1.0.0')
-  .argument('<hash>', 'Transaction hash to summarize')
-  .option('-c, --chain <name>', 'Chain name (ethereum, katana)', 'ethereum')
+  .argument('<hash>', 'Transaction hash or block explorer URL')
+  .option('-c, --chain <name>', 'Chain name (ethereum, arbitrum, optimism, base, polygon, zksync, katana)', 'ethereum')
   .option('-r, --rpc <url>', 'Custom RPC URL')
   .option('-v, --verbose', 'Show detailed output')
   .option('-j, --json', 'Output as JSON')
-  .action(async (hash: string, options) => {
+  .action(async (hashOrUrl: string, options) => {
     try {
+      let hash = hashOrUrl;
+      let chain: string = options.chain;
+
+      // Try parsing as explorer URL
+      const parsed = parseExplorerUrl(hashOrUrl);
+      if (parsed) {
+        hash = parsed.hash;
+        chain = parsed.chain;
+      }
+
       // Validate hash format
       if (!hash.startsWith('0x') || hash.length !== 66) {
         console.error(chalk.red('Error: Invalid transaction hash format'));
-        console.error(chalk.gray('Expected: 0x followed by 64 hex characters'));
+        console.error(chalk.gray('Expected: 0x followed by 64 hex characters, or a block explorer URL'));
         process.exit(1);
       }
 
       // Validate chain
-      if (!CHAINS[options.chain.toLowerCase()]) {
-        console.error(chalk.red(`Error: Unknown chain "${options.chain}"`));
+      if (!CHAINS[chain.toLowerCase()]) {
+        console.error(chalk.red(`Error: Unknown chain "${chain}"`));
         console.error(chalk.gray(`Supported chains: ${Object.keys(CHAINS).join(', ')}`));
         process.exit(1);
       }
 
       if (options.verbose && !options.json) {
-        console.log(chalk.gray(`Fetching tx from ${options.chain}...`));
+        console.log(chalk.gray(`Fetching tx from ${chain}...`));
       }
 
       const result = await summarizeTx(hash, {
-        chain: options.chain,
+        chain: chain,
         rpc: options.rpc,
       });
 
@@ -71,7 +81,7 @@ program
           console.log(chalk.gray('Block:  ') + result.blockNumber.toString());
         }
         
-        const explorerUrl = getExplorerUrl(options.chain, hash);
+        const explorerUrl = getExplorerUrl(chain, hash);
         if (explorerUrl) {
           console.log(chalk.gray('Explorer: ') + chalk.blue.underline(explorerUrl));
         }
