@@ -1,6 +1,12 @@
 # tx-summary
 
-> Summarize any blockchain transaction in plain English — no API keys, no LLM, pure pattern matching.
+> Summarize any blockchain transaction in plain English - no API keys, no LLM, pure pattern matching.
+
+## Demo
+
+<video src="demo.mp4" width="100%" autoplay loop muted playsinline></video>
+
+![Demo](demo.gif)
 
 tx-summary decodes EVM transactions using known function selectors, contract registries, and token databases to produce human-readable summaries. It works entirely offline (aside from RPC calls) with zero external dependencies beyond a public RPC endpoint.
 
